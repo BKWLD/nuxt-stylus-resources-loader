@@ -16,6 +16,9 @@
     "name": "Antério Vieira",
     "email": "anteriovieira@gmail.com"
   },
+  "contributors": [
+    "Bukwild"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
