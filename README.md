@@ -1,9 +1,6 @@
-# nuxt-sass-resources-loader
+_This package is a Stylus port of [nuxt-sass-resources-loader](https://github.com/anteriovieira/nuxt-sass-resources-loader)_
 
-[![npm](https://img.shields.io/npm/v/nuxt-sass-resources-loader.svg)](https://www.npmjs.com/package/nuxt-sass-resources-loader)
-[![npm](https://img.shields.io/npm/dt/nuxt-sass-resources-loader.svg?style=flat-square)](https://npmjs.com/package/nuxt-sass-resources-loader)
-[![donate](https://img.shields.io/badge/donate-%E2%99%A5-ff5f5f.svg)](https://patreon.com/anteriovieira) 
-
+# nuxt-stylus-resources-loader
 
 This module does all the hard work of configuring [sass-resources-loader](https://github.com/shakacode/sass-resources-loader) for your nuxt application.
 
@@ -12,9 +9,9 @@ This module does all the hard work of configuring [sass-resources-loader](https:
 ## Install
 
 ```sh
-npm i nuxt-sass-resources-loader
-# or 
-yarn add nuxt-sass-resources-loader
+npm i nuxt-stylus-resources-loader
+# or
+yarn add nuxt-stylus-resources-loader
 ```
 
 ## Usage
@@ -26,23 +23,23 @@ import {resolve} from 'path'
 module.exports = {
   modules: [
     // provide path to the file with resources
-    ['nuxt-sass-resources-loader', resolve(__dirname, 'path/to/resources.scss')],
+    ['nuxt-stylus-resources-loader', resolve(__dirname, 'path/to/resources.styl')],
 
     // or array of paths
-    ['nuxt-sass-resources-loader', [
-        resolve(__dirname, 'path/to/first-resources.sass'),
-        resolve(__dirname, 'path/to/second-resources.scss'),
+    ['nuxt-stylus-resources-loader', [
+        resolve(__dirname, 'path/to/first-resources.stylus'),
+        resolve(__dirname, 'path/to/second-resources.styl'),
     ]],
 
     // or the native options
-    ['nuxt-sass-resources-loader', {
-        resources: resolve(__dirname, 'path/to/resources.sass')
+    ['nuxt-stylus-resources-loader', {
+        resources: resolve(__dirname, 'path/to/resources.stylus')
     }],
   ],
 }
 ```
 
-or sass resources option. require v1.1+
+or stylus resources option. require v1.1+
 
 ```js
 // nuxt.config.js
@@ -50,10 +47,10 @@ import {resolve} from 'path'
 
 module.exports = {
   modules: [
-    'nuxt-sass-resources-loader'
+    'nuxt-stylus-resources-loader'
   ],
-  sassResources: [
-    resolve(__dirname, 'path/to/first-resources.sass')
+  stylusResources: [
+    resolve(__dirname, 'path/to/first-resources.stylus')
   ]
 }
 ```
@@ -64,15 +61,15 @@ You can specify glob patterns to match your all of your files in the same direct
 
 ```js
 // Specify a single path
-resources: './path/to/resources/**/*.scss', // will match all files in folder and subdirectories
+resources: './path/to/resources/**/*.styl', // will match all files in folder and subdirectories
 // or an array of paths
-resources: [ './path/to/resources/**/*.scss', './path/to/another/**/*.scss' ]
+resources: [ './path/to/resources/**/*.styl', './path/to/another/**/*.styl' ]
 ```
 
-> Note that sass-resources-loader will resolve your files in order. If you want your variables to be accessed across all of your mixins you should specify them in first place.
+> Note that stylus-resources-loader will resolve your files in order. If you want your variables to be accessed across all of your mixins you should specify them in first place.
 
 ```js
-resources: [ './path/to/variables/vars.scss', './path/to/mixins/**/*.scss' ]
+resources: [ './path/to/variables/vars.styl', './path/to/mixins/**/*.styl' ]
 ```
 
 [For more details see the official documentation](https://github.com/shakacode/sass-resources-loader#usage)
