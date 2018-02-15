@@ -11,8 +11,8 @@ module.exports = function nuxtSassResourcesLoader (moduleOptions = {}) {
 
     this.extendBuild((config, { isClient, isServer }) => {
 
-        const sassLoader = config.module.rules.filter(({test}) => {
-            return [ '/\\.styl/' ].indexOf(test.toString()) !== -1
+        const stylusLoader = config.module.rules.filter(({test}) => {
+            return [ '/\\.styl/', '/\\.styl(us)?$/' ].indexOf(test.toString()) !== -1
         })
 
         const vueLoader = config.module.rules.find(({test}) => {
@@ -27,8 +27,8 @@ module.exports = function nuxtSassResourcesLoader (moduleOptions = {}) {
             }
         })
 
-        Object.keys(sassLoader).forEach(loader => {
-            sassLoader[loader].use.push(sassResourcesLoader)
+        Object.keys(stylusLoader).forEach(loader => {
+            stylusLoader[loader].use.push(sassResourcesLoader)
         })
 
     })
