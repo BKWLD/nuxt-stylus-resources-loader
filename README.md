@@ -16,17 +16,17 @@ yarn add nuxt-stylus-resources-loader
 
 ```js
 // nuxt.config.js
-import {resolve} from 'path'
+const resolve = require('path').resolve
 
 module.exports = {
   modules: [
     // provide path to the file with resources
     ['nuxt-stylus-resources-loader', resolve(__dirname, 'path/to/resources.styl')],
 
-    // or array of paths
+    // or array of relative paths
     ['nuxt-stylus-resources-loader', [
         resolve(__dirname, 'path/to/first-resources.stylus'),
-        resolve(__dirname, 'path/to/second-resources.styl'),
+        resolve(__dirname, 'assets/stylus/mixin.styl'),
     ]],
   ],
 }
@@ -49,3 +49,55 @@ You can specify glob patterns to match your all of your files in the same direct
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
+
+## Example
+
+#### # nuxt.config.js
+```js
+const resolve = require('path').resolve
+
+module.exports = {
+  modules: [
+    ['nuxt-stylus-resources-loader', [
+        resolve(__dirname, 'assets/stylus/helpers/variables.styl'),
+        resolve(__dirname, 'assets/stylus/helpers/mixins.styl'),
+    ]],
+  ],
+}
+```
+
+#### # variables.styl
+```stylus
+$tablet = "(min-width: 768px)"
+$desktop = "(min-width: 1440px)"
+```
+
+#### # mixins.styl
+```stylus
+tablet()
+  @media $tablet
+  {block}
+    
+desktop()
+  @media $desktop
+  {block}
+```
+
+
+#### # components/sample.vue
+```vue
+<template lang="pug">
+    .container
+        h1 Test
+</template>
+
+<style lang="stylus">
+h1
+    font-size 14px
+    +tablet()
+        font-size 16px
+    +desktop()
+        font-size 18px
+</style>
+
+```
