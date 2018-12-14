@@ -16,17 +16,17 @@ yarn add nuxt-stylus-resources-loader
 
 ```js
 // nuxt.config.js
-import {resolve} from 'path'
+const resolve = require('path').resolve
 
 module.exports = {
   modules: [
     // provide path to the file with resources
     ['nuxt-stylus-resources-loader', resolve(__dirname, 'path/to/resources.styl')],
 
-    // or array of paths
+    // or array of relative paths
     ['nuxt-stylus-resources-loader', [
         resolve(__dirname, 'path/to/first-resources.stylus'),
-        resolve(__dirname, 'path/to/second-resources.styl'),
+        resolve(__dirname, 'assets/stylus/mixin.styl'),
     ]],
   ],
 }
